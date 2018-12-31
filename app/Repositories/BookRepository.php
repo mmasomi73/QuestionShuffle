@@ -9,39 +9,39 @@
 namespace App\Repositories;
 
 
-use App\Grade;
+use App\Book;
 
-class GradeRepository
+class BookRepository
 {
     private $model;
     public function __construct()
     {
-        $this->model = new Grade();
+        $this->model = new Book();
     }
 
     /**
-     * Store Grade  [^_^]
+     * Store Book  [^_^]
      * @param $request
      */
     public function store($request)
     {
         $this->model->name = $request->get('name');
-        $this->model->slug = $request->get('slug');
+        $this->model->grade_id = $request->get('grade_id');
         $this->model->save();
     }
 
     /**
-     * Update Grade  [^_^]
+     * Update Book  [^_^]
      * @param $request
-     * @param $grade
+     * @param $book
      * @return bool
      */
-    public function update($request, $grade)
+    public function update($request, $book)
     {
-        $this->model = $this->getModel($grade);
-        if(!empty($grade)){
+        $this->model = $this->getModel($book);
+        if(!empty($book)){
             $this->model->name = $request->get('name');
-            $this->model->slug = $request->get('slug');
+            $this->model->grade_id = $request->get('grade_id');
             $this->model->save();
             return true;
         }
@@ -59,21 +59,21 @@ class GradeRepository
     }
 
     /**
-     * Get Grade By Id  [*_*]
-     * @param $grade
+     * Get Book By Id  [*_*]
+     * @param $book
      * @return mixed
      */
-    public function getById($grade)
+    public function getById($book)
     {
-       return $this->model->where('id',$grade)->with(['books','books.sessions','books.sessions.questions'])->first();
+       return $this->model->where('id',$book)->with(['sessions','sessions.questions'])->first();
     }
 
     /**
-     * get all grades   [-_-']
+     * get all Books   [-_-']
      * @return \Illuminate\Database\Eloquent\Model|null|object|static
      */
     public function all()
     {
-        return $this->model->with(['books','books.sessions','books.sessions.questions'])->get();
+        return $this->model->with(['sessions','sessions.questions'])->get();
     }
 }

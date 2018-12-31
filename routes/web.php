@@ -14,16 +14,16 @@
 //----------------------------------------= Grade Route
 Route::get('grade','Admin\GradeController@index')->name('admin.grade.index');
     Route::post('grade/store','Admin\GradeController@store')->name('admin.grade.store');
-Route::get('grade/edit','Admin\GradeController@edit')->name('admin.grade.edit');
-Route::post('grade/update','Admin\GradeController@update')->name('admin.grade.update');
-Route::post('grade/remove','Admin\GradeController@remove')->name('admin.grade.remove');
+Route::get('grade/edit/{grade}','Admin\GradeController@edit')->name('admin.grade.edit');
+Route::post('grade/update/{grade}','Admin\GradeController@update')->name('admin.grade.update');
+Route::post('grade/remove/{grade}','Admin\GradeController@remove')->name('admin.grade.remove');
 
 //----------------------------------------= Book Route
 Route::get('book','Admin\BookController@index')->name('admin.book.index');
 Route::post('book/store','Admin\BookController@store')->name('admin.book.store');
-Route::get('book/edit','Admin\BookController@edit')->name('admin.book.edit');
-Route::post('book/update','Admin\BookController@update')->name('admin.book.update');
-Route::post('book/remove','Admin\BookController@remove')->name('admin.book.remove');
+Route::get('book/edit/{book}','Admin\BookController@edit')->name('admin.book.edit');
+Route::post('book/update/{book}','Admin\BookController@update')->name('admin.book.update');
+Route::post('book/remove/{book}','Admin\BookController@remove')->name('admin.book.remove');
 
 //----------------------------------------= Session Route
 Route::get('session','Admin\SessionController@index')->name('admin.session.index');
