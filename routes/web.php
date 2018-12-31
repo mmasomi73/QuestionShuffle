@@ -11,6 +11,39 @@
 |
 */
 
-Route::get('/', function () {
-    return view('admin.index.index');
+//----------------------------------------= Grade Route
+Route::get('grade','Admin\GradeController@index')->name('admin.grade.index');
+    Route::post('grade/store','Admin\GradeController@store')->name('admin.grade.store');
+Route::get('grade/edit','Admin\GradeController@edit')->name('admin.grade.edit');
+Route::post('grade/update','Admin\GradeController@update')->name('admin.grade.update');
+Route::post('grade/remove','Admin\GradeController@remove')->name('admin.grade.remove');
+
+//----------------------------------------= Book Route
+Route::get('book','Admin\BookController@index')->name('admin.book.index');
+Route::post('book/store','Admin\BookController@store')->name('admin.book.store');
+Route::get('book/edit','Admin\BookController@edit')->name('admin.book.edit');
+Route::post('book/update','Admin\BookController@update')->name('admin.book.update');
+Route::post('book/remove','Admin\BookController@remove')->name('admin.book.remove');
+
+//----------------------------------------= Session Route
+Route::get('session','Admin\SessionController@index')->name('admin.session.index');
+Route::post('session/store','Admin\SessionController@store')->name('admin.session.store');
+Route::get('session/edit','Admin\SessionController@edit')->name('admin.session.edit');
+Route::post('session/update','Admin\SessionController@update')->name('admin.session.update');
+Route::post('session/remove','Admin\SessionController@remove')->name('admin.session.remove');
+
+//----------------------------------------= Question Route
+Route::get('question','Admin\QuestionController@index')->name('admin.question.index');
+Route::get('question/create','Admin\QuestionController@create')->name('admin.question.create');
+Route::post('question/store','Admin\QuestionController@store')->name('admin.question.store');
+Route::get('question/edit','Admin\QuestionController@edit')->name('admin.question.edit');
+Route::post('question/update','Admin\QuestionController@update')->name('admin.question.update');
+Route::post('question/remove','Admin\QuestionController@remove')->name('admin.question.remove');
+
+//----------------------------------------= Exam Route
+Route::get('exam','Admin\ExamController@index')->name('admin.exam.index');
+Route::post('exam/take','Admin\ExamController@take')->name('admin.exam.take');
+
+Route::get('/',function (){
+    return redirect(route('admin.grade.index'));
 });

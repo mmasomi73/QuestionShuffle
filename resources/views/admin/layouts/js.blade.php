@@ -17,6 +17,7 @@
 <script src="{{url('/')}}/assets/pages/widget/amchart/serial.js"></script>
 <script src="{{url('/')}}/assets/pages/widget/amchart/light.js"></script>
 <!-- Custom js -->
+<script src="{{url('/')}}/assets/vendor/notifyjs/bootstrap-notify.min.js"></script>
 <script src="{{url('/')}}/assets/js/pcoded.min.js"></script>
 <script src="{{url('/')}}/assets/js/vertical/vertical-layout.min.js"></script>
 <script type="text/javascript" src="{{url('/')}}/assets/pages/dashboard/custom-dashboard.min.js"></script>

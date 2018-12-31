@@ -5,6 +5,7 @@
     <title>@yield('title')</title>
     @include('admin.layouts.meta')
     @include('admin.layouts.css')
+    @yield('css')
 </head>
 
 <body>
@@ -34,6 +35,7 @@
     </div>
 </div>
 @include('admin.layouts.js')
+@yield('js')
 </body>
 
 </html>

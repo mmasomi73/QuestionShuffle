@@ -6,8 +6,10 @@
 <link rel="stylesheet" type="text/css" href="{{url('/')}}/assets/css/bootstrap/css/bootstrap.min.css">
 <!-- waves.css -->
 <link rel="stylesheet" href="{{url('/')}}/assets/pages/waves/css/waves.min.css" type="text/css" media="all">
-<!-- feather icon -->
+<!-- icon -->
 <link rel="stylesheet" type="text/css" href="{{url('/')}}/assets/icon/feather/css/feather.css">
+<link rel="stylesheet" type="text/css" href="{{url('/')}}/assets/icon/themify-icons/themify-icons.css">
 <!-- Style.css -->
 <link rel="stylesheet" type="text/css" href="{{url('/')}}/assets/css/style.css">
 <link rel="stylesheet" type="text/css" href="{{url('/')}}/assets/css/widget.css">
+<link rel="stylesheet" type="text/css" href="{{url('/')}}/assets/vendor/notifyjs/animate.css">
