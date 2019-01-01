@@ -11,7 +11,7 @@
                     </div>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="#!"><i class="feather icon-home"></i></a>
+                            <a href="{{route('admin.index')}}"><i class="feather icon-home"></i></a>
                         </li>
                     </ul>
                 </div>

@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title') صفحه اصلی @endsection
+@section('title') صفحه مدیریت کتب و منابع @endsection
 
 @section('breadcrumb')
     <div class="page-header">
@@ -11,7 +11,10 @@
                     </div>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="#!"><i class="feather icon-home"></i></a>
+                            <a href="{{route('admin.index')}}"><i class="feather icon-home"></i></a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="javascript:void(0);">مدیریت کتب و منابع</a>
                         </li>
                     </ul>
                 </div>

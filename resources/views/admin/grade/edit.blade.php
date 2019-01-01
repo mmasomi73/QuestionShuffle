@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title') صفحه اصلی @endsection
+@section('title') صفحه ویرایش پایه @endsection
 
 @section('breadcrumb')
     <div class="page-header">
@@ -7,11 +7,17 @@
             <div class="row align-items-center">
                 <div class="col-md-8">
                     <div class="page-header-title">
-                        <h4 class="m-b-10">صفحه اصلی</h4>
+                        <h4 class="m-b-10">صفحه ویرایش پایه</h4>
                     </div>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="#!"><i class="feather icon-home"></i></a>
+                            <a href="{{route('admin.index')}}"><i class="feather icon-home"></i></a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="{{route('admin.grade.index')}}">مدیریت پایه ها</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="javascript:void(0);">ویرایش پایه</a>
                         </li>
                     </ul>
                 </div>
