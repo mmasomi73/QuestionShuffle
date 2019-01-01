@@ -43,4 +43,9 @@ Route::post('question/remove/{question}','Admin\QuestionController@remove')->nam
 Route::get('exam','Admin\ExamController@index')->name('admin.exam.index');
 Route::post('exam/take','Admin\ExamController@take')->name('admin.exam.take');
 
+//----------------------------------------= Exam Route
+Route::get('excel','Admin\ExportController@excel')->name('admin.export.excel');
+Route::get('word','Admin\ExportController@word')->name('admin.export.word');
+Route::get('pdf','Admin\ExportController@pdf')->name('admin.export.pdf');
+
 Route::get('/','Admin\IndexController@index')->name('admin.index');
