@@ -9,39 +9,39 @@
 namespace App\Repositories;
 
 
-use App\Book;
+use App\Session;
 
-class BookRepository
+class SessionRepository
 {
     private $model;
     public function __construct()
     {
-        $this->model = new Book();
+        $this->model = new Session();
     }
 
     /**
-     * Store Book  [^_^]
+     * Store Session  [^_^]
      * @param $request
      */
     public function store($request)
     {
         $this->model->name = $request->get('name');
-        $this->model->grade_id = $request->get('grade_id');
+        $this->model->book_id = $request->get('book_id');
         $this->model->save();
     }
 
     /**
-     * Update Book  [^_^]
+     * Update Session  [^_^]
      * @param $request
-     * @param $book
+     * @param $session
      * @return bool
      */
-    public function update($request, $book)
+    public function update($request, $session)
     {
-        $this->model = $this->getModel($book);
-        if(!empty($book)){
+        $this->model = $this->getModel($session);
+        if(!empty($session)){
             $this->model->name = $request->get('name');
-            $this->model->grade_id = $request->get('grade_id');
+            $this->model->book_id = $request->get('book_id');
             $this->model->save();
             return true;
         }
@@ -59,21 +59,21 @@ class BookRepository
     }
 
     /**
-     * Get Book By Id  [*_*]
-     * @param $book
+     * Get Session By Id  [*_*]
+     * @param $session
      * @return mixed
      */
-    public function getById($book)
+    public function getById($session)
     {
-       return $this->model->where('id',$book)->with(['grade','sessions','sessions.questions'])->first();
+       return $this->model->where('id',$session)->with(['book','questions'])->first();
     }
 
     /**
-     * get all Books   [-_-']
+     * get all Sessions   [-_-']
      * @return \Illuminate\Database\Eloquent\Model|null|object|static
      */
     public function all()
     {
-        return $this->model->with(['grade','sessions','sessions.questions'])->get();
+        return $this->model->with(['book','questions'])->get();
     }
 }

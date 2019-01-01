@@ -20,7 +20,7 @@ class Book extends Model
      */
     public function grade()
     {
-        return $this->belongsTo(Grade::class,'grade','id');
+        return $this->belongsTo(Grade::class,'grade_id','id');
     }
 
     /**

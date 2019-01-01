@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title') صفحه اصلی @endsection
+@section('title') صفحه ویرایش فصل @endsection
 
 @section('breadcrumb')
     <div class="page-header">
@@ -7,7 +7,7 @@
             <div class="row align-items-center">
                 <div class="col-md-8">
                     <div class="page-header-title">
-                        <h4 class="m-b-10">صفحه ویرایش کتاب و منبع</h4>
+                        <h4 class="m-b-10">صفحه ویرایش فصل</h4>
                     </div>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item">
@@ -31,41 +31,11 @@
                     <div class="row">
                         @php
 
-                            $session = 0;
                             $question = 0;
-
-                            $session += count($book->sessions);
-                            foreach ($book->sessions as $session) {
-                                $question += count($session->questions);
-                            }
+                            $question += count($session->questions);
 
                         @endphp
-                        <div class="col-md-6">
-                            <div class="card">
-                                <div class="card-block">
-                                    <div class="row align-items-center">
-                                        <div class="col-8">
-                                            <h4 class="text-c-green">{{$session}}</h4>
-                                            <h6 class="text-muted m-b-0">فصل</h6>
-                                        </div>
-                                        <div class="col-4 text-right">
-                                            <i class="feather icon-file-text f-28"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer bg-c-green">
-                                    <div class="row align-items-center">
-                                        <div class="col-9">
-                                            <p class="text-white  text-right m-b-0">% تعداد کل فصول منبع</p>
-                                        </div>
-                                        <div class="col-3 text-right">
-                                            <i class="feather icon-trending-up text-white f-16"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="card">
                                 <div class="card-block">
                                     <div class="row align-items-center">
@@ -94,7 +64,7 @@
                     <!-- Update -->
                     <div class="card rtl text-right">
                         <div class="card-header">
-                            <h5>ویرایش کتاب یا منبع</h5>
+                            <h5>ویرایش فصل</h5>
                             <div class="card-header-right">
                                 <ul class="list-unstyled card-option">
                                     <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i>
@@ -108,33 +78,33 @@
                             </div>
                         </div>
                         <div class="card-block table-border-style">
-                            <form action="{{route('admin.book.update', $book->id)}}" method="post" class="form-material">
+                            <form action="{{route('admin.session.update', $session->id)}}" method="post" class="form-material">
                                 @csrf
                                 <div class="row">
                                     {{-- Name --}}
                                     <div class="col-lg-5">
                                         <div class="form-group {{ $errors->has('name') ? 'form-danger' : 'form-primary' }}">
-                                            <input type="text" class="form-control rtl text-right isf" name="name" id="name" value="{{old('name',$book->name)}}">
+                                            <input type="text" class="form-control rtl text-right isf" name="name" id="name" value="{{old('name',$session->name)}}">
                                             <span class="form-bar"></span>
                                             @if ($errors->has('name'))
                                                 <span class="input-error">{{ $errors->first('name') }}</span>
                                             @endif
-                                            <label for="name" class="float-label">نام کتاب یا منبع</label>
+                                            <label for="name" class="float-label">عنوان فصل</label>
                                         </div>
                                     </div>
                                     {{-- Slug --}}
                                     <div class="col-lg-4">
-                                        <div class="form-group {{ $errors->has('grade_id') ? 'form-danger' : 'form-primary' }}">
-                                            <select name="grade_id" id="grade_id" class="form-control isf">
-                                                @foreach($grades as $grade)
-                                                    <option @if(old('grade_id',$book->grade_id) == $grade->id) selected @endif value="{{$grade->id}}">{{$grade->name}}({{$grade->slug}})</option>
+                                        <div class="form-group {{ $errors->has('book_id') ? 'form-danger' : 'form-primary' }}">
+                                            <select name="book_id" id="book_id" class="form-control isf">
+                                                @foreach($books as $book)
+                                                    <option @if(old('book_id',$session->book_id) == $book->id) selected @endif value="{{$book->id}}">{{$book->name}}</option>
                                                 @endforeach
                                             </select>
                                             <span class="form-bar"></span>
                                             @if ($errors->has('grade_id'))
-                                                <span class="input-error">{{ $errors->first('grade_id') }}</span>
+                                                <span class="input-error">{{ $errors->first('book_id') }}</span>
                                             @endif
-                                            <label for="grade_id" class="float-label"> پایه</label>
+                                            <label for="book_id" class="float-label"> کتاب</label>
                                         </div>
                                     </div>
 
@@ -148,7 +118,7 @@
                     <!-- Store Session -->
                     <div class="card rtl text-right">
                         <div class="card-header">
-                            <h5>افزودن فصول کتاب</h5>
+                            <h5>افزودن سوال</h5>
                             <div class="card-header-right">
                                 <ul class="list-unstyled card-option">
                                     <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i>
@@ -162,21 +132,13 @@
                             </div>
                         </div>
                         <div class="card-block table-border-style">
-                            <form action="{{route('admin.session.store')}}" method="post" class="form-material">
+                            <form action="{{route('admin.question.store')}}" method="post" class="form-material">
                                 @csrf
-                                <input type="hidden" name="book_id" value="{{$book->id}}">
+                                <input type="hidden" name="book_id" value="{{$session->book_id}}">
+                                <input type="hidden" name="session_id" value="{{$session->id}}">
                                 <div class="row">
                                     {{-- Name --}}
-                                    <div class="col-lg-9">
-                                        <div class="form-group {{ $errors->has('name') ? 'form-danger' : 'form-primary' }}">
-                                            <input type="text" class="form-control rtl text-right isf" name="name" id="name">
-                                            <span class="form-bar"></span>
-                                            @if ($errors->has('name'))
-                                                <span class="input-error">{{ $errors->first('name') }}</span>
-                                            @endif
-                                            <label for="name" class="float-label">عنوان فصل</label>
-                                        </div>
-                                    </div>
+
 
                                     <div class="col-lg-3">
                                         <button type="submit" class="btn btn-info waves-effect waves-light w-100">ثبــــت</button>
@@ -188,7 +150,7 @@
                     <!-- Books -->
                     <div class="card rtl text-right isf">
                         <div class="card-header">
-                            <h5>فصول کتاب</h5>
+                            <h5>سوالات فصل</h5>
                             <div class="card-header-right">
                                 <ul class="list-unstyled card-option">
                                     <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i>
@@ -207,8 +169,8 @@
                                     <thead>
                                     <tr class="rtl text-right">
                                         <th>#</th>
-                                        <th>نام</th>
-                                        <th>تعداد سوالات</th>
+                                        <th>سوال</th>
+                                        <th>جواب</th>
                                         <th>عملیات</th>
                                     </tr>
                                     </thead>
@@ -216,18 +178,26 @@
                                     @php
                                         $i = 0;
                                     @endphp
-                                    @forelse($book->sessions as $session)
-                                        @php
-                                            $question = 0;
-                                            $question += count($session->questions);
-
-                                        @endphp
-                                        <tr>
+                                    @forelse($session->questions as $question)
+                                        <tr class="fnt-10p">
                                             <th scope="row">{{++$i}}</th>
-                                            <td>{{$session->name}}</td>
-                                            <td>{{$question}}</td>
                                             <td>
-                                                <a href="{{route('admin.session.edit', $session->id)}}" class="btn btn-inverse btn-sm waves-effect waves-light w-100">مشاهده</a>
+                                                <div class="row fnt-10p">
+                                                    <div class="col-lg-12">{{$question->question}}</div>
+                                                    @foreach($question->options as $option)
+                                                    <div class="col-lg-6">{{$option->option.'('.$option->text}}</div>
+                                                    @endforeach
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    @foreach($question->answers as $answer)
+                                                        <div class="col-lg-12">{{$answer->option.'('.$answer->answer}}</div>
+                                                    @endforeach
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <a href="{{route('admin.question.edit', $question->id)}}" class="btn btn-inverse btn-sm waves-effect waves-light w-100">مشاهده</a>
                                             </td>
                                         </tr>
                                     @empty

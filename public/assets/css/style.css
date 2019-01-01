@@ -9628,3 +9628,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > td:first-child:before, table
 select.form-control:not([size]):not([multiple]) {
     height: 43px !important;
 }
+.fnt-12{
+    font-size: 12px;
+}
+.fnt-10p{
+    font-size: 10px;
+}

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\Book\StoreBookRequest;
+use App\Http\Requests\Admin\Book\UpdateBookRequest;
 use App\Repositories\BookRepository;
 use App\Repositories\GradeRepository;
 use Illuminate\Http\Request;
@@ -38,13 +39,15 @@ class BookController extends Controller
 
     /**
      * edit grade page
-     * @param $grade
-     * @param GradeRepository $repository
+     * @param $book
+     * @param BookRepository $repository
+     * @param GradeRepository $gradeRepository
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit($book, BookRepository $repository){
+    public function edit($book, BookRepository $repository, GradeRepository $gradeRepository){
         $book = $repository->getById($book);
-        return view('admin.book.edit',compact('book'));
+        $grades = $gradeRepository->all();
+        return view('admin.book.edit',compact('book','grades'));
     }
 
     /**
@@ -55,14 +58,14 @@ class BookController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function update($grade, UpdateGradeRequest $request , BookRepository $repository){
+    public function update($grade, UpdateBookRequest $request , BookRepository $repository){
         try{
             \DB::beginTransaction();
             $result = $repository->update($request, $grade);
             \DB::commit();
             if($result)
-                return back()->with('success','پایه مورد نظر با موفقیت افزوده گردید.');
-            return back()->with('error','پایه برای ویرایش یافت نشد.');
+                return back()->with('success','فصل مورد نظر با موفقیت افزوده گردید.');
+            return back()->with('error','فصل برای ویرایش یافت نشد.');
         }catch (\Exception $e){
             \DB::rollBack();
             return back()->with('error','خطا در ثبت اطلاعات');

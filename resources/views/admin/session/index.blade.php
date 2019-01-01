@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title') صفحه اصلی @endsection
+@section('title') صفحه مدیریت فصول @endsection
 
 @section('breadcrumb')
     <div class="page-header">
@@ -7,7 +7,7 @@
             <div class="row align-items-center">
                 <div class="col-md-8">
                     <div class="page-header-title">
-                        <h4 class="m-b-10">صفحه مدیریت کتب</h4>
+                        <h4 class="m-b-10">صفحه مدیریت فصول</h4>
                     </div>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item">
@@ -30,7 +30,7 @@
                     <!-- Store -->
                     <div class="card rtl text-right">
                         <div class="card-header">
-                            <h5>افزودن کتاب یا منبع</h5>
+                            <h5>افزودن فصل</h5>
                             <div class="card-header-right">
                                 <ul class="list-unstyled card-option">
                                     <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i>
@@ -44,7 +44,7 @@
                             </div>
                         </div>
                         <div class="card-block table-border-style">
-                            <form action="{{route('admin.book.store')}}" method="post" class="form-material">
+                            <form action="{{route('admin.session.store')}}" method="post" class="form-material">
                                 @csrf
                                 <div class="row">
                                     {{-- Name --}}
@@ -55,22 +55,22 @@
                                             @if ($errors->has('name'))
                                                 <span class="input-error">{{ $errors->first('name') }}</span>
                                             @endif
-                                            <label for="name" class="float-label">نام کتاب یا منبع</label>
+                                            <label for="name" class="float-label">عنوان کتاب</label>
                                         </div>
                                     </div>
-                                    {{-- Slug --}}
+                                    {{-- Book --}}
                                     <div class="col-lg-4">
-                                        <div class="form-group {{ $errors->has('grade_id') ? 'form-danger' : 'form-primary' }}">
-                                            <select name="grade_id" id="grade_id" class="form-control isf">
-                                                @foreach($grades as $grade)
-                                                    <option @if(old('grade_id') == $grade->id) selected @endif value="{{$grade->id}}">{{$grade->name}}({{$grade->slug}})</option>
+                                        <div class="form-group {{ $errors->has('book_id') ? 'form-danger' : 'form-primary' }}">
+                                            <select name="book_id" id="book_id" class="form-control isf">
+                                                @foreach($books as $book)
+                                                    <option @if(old('book_id') == $book->id) selected @endif value="{{$book->id}}">{{$book->name}}</option>
                                                 @endforeach
                                             </select>
                                             <span class="form-bar"></span>
-                                            @if ($errors->has('grade_id'))
-                                                <span class="input-error">{{ $errors->first('grade_id') }}</span>
+                                            @if ($errors->has('book_id'))
+                                                <span class="input-error">{{ $errors->first('book_id') }}</span>
                                             @endif
-                                            <label for="grade_id" class="float-label"> پایه</label>
+                                            <label for="book_id" class="float-label"> کتاب یا منبع</label>
                                         </div>
                                     </div>
 
@@ -84,7 +84,7 @@
                     <!-- List -->
                     <div class="card rtl text-right isf">
                         <div class="card-header">
-                            <h5>کتب و منابع</h5>
+                            <h5>فصول</h5>
                             <div class="card-header-right">
                                 <ul class="list-unstyled card-option">
                                     <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i>
@@ -104,8 +104,7 @@
                                     <tr class="rtl text-right">
                                         <th>#</th>
                                         <th>نام</th>
-                                        <th>پایه</th>
-                                        <th>تعداد فصول</th>
+                                        <th>کتاب</th>
                                         <th>تعداد سوالات</th>
                                         <th>عملیات</th>
                                     </tr>
@@ -114,23 +113,23 @@
                                     @php
                                         $i = 0;
                                     @endphp
-                                    @forelse($books as $book)
+                                    @forelse($sessions as $session)
                                         @php
-                                            $session = 0;
                                             $question = 0;
-                                            $session += count($book->sessions);
-                                            foreach ($book->sessions as $session) {
-                                                $question += count($session->questions);
-                                            }
+                                            $question += count($session->questions);
+
                                         @endphp
                                     <tr>
                                         <th scope="row">{{++$i}}</th>
-                                        <td>{{$book->name}}</td>
-                                        <td><a href="{{route('admin.grade.edit',$book->grade->id)}}"><span class="fnt-12">{{$book->grade->name}}</span></a></td>
-                                        <td>{{$session}}</td>
+                                        <td>{{$session->name}}</td>
+                                        <td>
+                                            <a href="{{route('admin.book.edit',$session->book->id)}}">
+                                                <span class="fnt-12">{{$session->book->name}}</span>
+                                            </a>
+                                        </td>
                                         <td>{{$question}}</td>
                                         <td>
-                                            <a href="{{route('admin.book.edit', $book->id)}}" class="btn btn-inverse btn-sm waves-effect waves-light w-100">مشاهده</a>
+                                            <a href="{{route('admin.session.edit', $session->id)}}" class="btn btn-inverse btn-sm waves-effect waves-light w-100">مشاهده</a>
                                         </td>
                                     </tr>
                                     @empty

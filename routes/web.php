@@ -28,9 +28,9 @@ Route::post('book/remove/{book}','Admin\BookController@remove')->name('admin.boo
 //----------------------------------------= Session Route
 Route::get('session','Admin\SessionController@index')->name('admin.session.index');
 Route::post('session/store','Admin\SessionController@store')->name('admin.session.store');
-Route::get('session/edit','Admin\SessionController@edit')->name('admin.session.edit');
-Route::post('session/update','Admin\SessionController@update')->name('admin.session.update');
-Route::post('session/remove','Admin\SessionController@remove')->name('admin.session.remove');
+Route::get('session/edit/{session}','Admin\SessionController@edit')->name('admin.session.edit');
+Route::post('session/update/{session}','Admin\SessionController@update')->name('admin.session.update');
+Route::post('session/remove/{session}','Admin\SessionController@remove')->name('admin.session.remove');
 
 //----------------------------------------= Question Route
 Route::get('question','Admin\QuestionController@index')->name('admin.question.index');

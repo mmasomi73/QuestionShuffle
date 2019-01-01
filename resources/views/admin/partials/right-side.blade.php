@@ -34,48 +34,15 @@
                     <span class="pcoded-mtext">داشبورد</span>
                 </a>
             </li>
-            <li class="pcoded-hasmenu">
-                <a href="javascript:void(0)" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="feather icon-box"></i></span>
-                    <span class="pcoded-mtext">محتواها</span>
-                </a>
-                <ul class="pcoded-submenu">
-                    <li class="">
-                        <a href="breadcrumb.html" class="waves-effect waves-dark">
-                            <span class="pcoded-mtext">نمرات</span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="button.html" class="waves-effect waves-dark">
-                            <span class="pcoded-mtext">درس ها</span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="accordion.html" class="waves-effect waves-dark">
-                            <span class="pcoded-mtext">محتواها</span>
-                        </a>
-                    </li>
-                    <li class=" ">
-                        <a href="tabs.html" class="waves-effect waves-dark">
-                            <span class="pcoded-mtext">تکالیف</span>
-                        </a>
-                    </li>
-                    <li class=" ">
-                        <a href="color.html" class="waves-effect waves-dark">
-                            <span class="pcoded-mtext">رنگ ها</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
         </ul>
-        <div class="pcoded-navigation-label">وظایف </div>
+        <div class="pcoded-navigation-label">سوالات </div>
         <ul class="pcoded-item pcoded-left-item">
             <li class=" ">
                 <a href="form-elements-component.html" class="waves-effect waves-dark">
                                     <span class="pcoded-micon">
                                         <i class="feather icon-clipboard"></i>
                                     </span>
-                    <span class="pcoded-mtext">فرم ها</span>
+                    <span class="pcoded-mtext">مدیریت سوالات</span>
                 </a>
             </li>
             <li class=" ">
@@ -83,87 +50,35 @@
                                     <span class="pcoded-micon">
                                         <i class="feather icon-credit-card"></i>
                                     </span>
-                    <span class="pcoded-mtext">جداول</span>
+                    <span class="pcoded-mtext">افزودن سوال</span>
                 </a>
             </li>
         </ul>
-        <div class="pcoded-navigation-label">چارت ها</div>
+        <div class="pcoded-navigation-label">مدیریت</div>
         <ul class="pcoded-item pcoded-left-item">
             <li class="">
-                <a href="chart-morris.html" class="waves-effect waves-dark">
+                <a href="{{route('admin.grade.index')}}" class="waves-effect waves-dark">
                                     <span class="pcoded-micon">
                                         <i class="feather icon-pie-chart"></i>
                                     </span>
-                    <span class="pcoded-mtext">نمودارها</span>
+                    <span class="pcoded-mtext">پایه ها</span>
                 </a>
             </li>
             <li class="">
-                <a href="map-google.html" class="waves-effect waves-dark">
+                <a href="{{route('admin.book.index')}}" class="waves-effect waves-dark">
                                     <span class="pcoded-micon">
                                         <i class="feather icon-map"></i>
                                     </span>
-                    <span class="pcoded-mtext">نقشه ها</span>
+                    <span class="pcoded-mtext">کتب</span>
                 </a>
             </li>
-            <li class="pcoded-hasmenu ">
-                <a href="javascript:void(0)" class="waves-effect waves-dark">
+            <li class="">
+                <a href="{{route('admin.session.index')}}" class="waves-effect waves-dark">
                                     <span class="pcoded-micon">
                                         <i class="feather icon-unlock"></i>
                                     </span>
-                    <span class="pcoded-mtext">صفحات</span>
+                    <span class="pcoded-mtext">فصول</span>
                 </a>
-                <ul class="pcoded-submenu">
-                    <li class="">
-                        <a href="auth-normal-sign-in.html" target="_blank" class="waves-effect waves-dark">
-                            <span class="pcoded-mtext">ورود</span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="auth-sign-up.html" target="_blank" class="waves-effect waves-dark">
-                            <span class="pcoded-mtext">ثبت نام</span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="sample-page.html" class="waves-effect waves-dark">
-                            <span class="pcoded-mtext">ساده</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-        <div class="pcoded-navigation-label">دیگر</div>
-        <ul class="pcoded-item pcoded-left-item">
-            <li class="pcoded-hasmenu ">
-                <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                    <span class="pcoded-micon">
-                                        <i class="feather icon-list"></i>
-                                    </span>
-                    <span class="pcoded-mtext">ردیف</span>
-                </a>
-                <ul class="pcoded-submenu">
-                    <li class="">
-                        <a href="javascript:void(0)" class="waves-effect waves-dark">
-                            <span class="pcoded-mtext">ردیف 2</span>
-                        </a>
-                    </li>
-                    <li class="pcoded-hasmenu ">
-                        <a href="javascript:void(0)" class="waves-effect waves-dark">
-                            <span class="pcoded-mtext">زیر ردیف 2.3</span>
-                        </a>
-                        <ul class="pcoded-submenu">
-                            <li class="">
-                                <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                    <span class="pcoded-mtext">ردیف 3</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="">
-                        <a href="javascript:void(0)" class="waves-effect waves-dark">
-                            <span class="pcoded-mtext">Menu Level 2.3</span>
-                        </a>
-                    </li>
-                </ul>
             </li>
         </ul>
     </div>
