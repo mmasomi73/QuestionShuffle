@@ -34,16 +34,13 @@ Route::post('session/remove/{session}','Admin\SessionController@remove')->name('
 
 //----------------------------------------= Question Route
 Route::get('question','Admin\QuestionController@index')->name('admin.question.index');
-Route::get('question/create','Admin\QuestionController@create')->name('admin.question.create');
 Route::post('question/store','Admin\QuestionController@store')->name('admin.question.store');
-Route::get('question/edit','Admin\QuestionController@edit')->name('admin.question.edit');
-Route::post('question/update','Admin\QuestionController@update')->name('admin.question.update');
-Route::post('question/remove','Admin\QuestionController@remove')->name('admin.question.remove');
+Route::get('question/edit/{question}','Admin\QuestionController@edit')->name('admin.question.edit');
+Route::post('question/update/{question}','Admin\QuestionController@update')->name('admin.question.update');
+Route::post('question/remove/{question}','Admin\QuestionController@remove')->name('admin.question.remove');
 
 //----------------------------------------= Exam Route
 Route::get('exam','Admin\ExamController@index')->name('admin.exam.index');
 Route::post('exam/take','Admin\ExamController@take')->name('admin.exam.take');
 
-Route::get('/',function (){
-    return redirect(route('admin.grade.index'));
-});
+Route::get('/','Admin\IndexController@index')->name('admin.index');

@@ -76,4 +76,9 @@ class SessionRepository
     {
         return $this->model->with(['book','questions'])->get();
     }
+
+    public function count()
+    {
+        return Session::count();
+    }
 }

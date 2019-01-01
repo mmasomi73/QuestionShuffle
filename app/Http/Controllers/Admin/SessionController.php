@@ -6,6 +6,7 @@ use App\Http\Requests\Admin\Grade\StoreGradeRequest;
 use App\Http\Requests\Admin\Session\StoreSessionRequest;
 use App\Http\Requests\Admin\Session\UpdateSessionRequest;
 use App\Repositories\BookRepository;
+use App\Repositories\GradeRepository;
 use App\Repositories\SessionRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -48,7 +49,8 @@ class SessionController extends Controller
     public function edit($book, BookRepository $bookRepository, SessionRepository $repository){
         $session = $repository->getById($book);
         $books = $bookRepository->all();
-        return view('admin.session.edit',compact('session','books'));
+        $grades = (new GradeRepository)->all();
+        return view('admin.session.edit',compact('session','books','grades'));
     }
 
     /**

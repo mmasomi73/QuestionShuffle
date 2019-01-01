@@ -115,9 +115,9 @@
                                             $session = 0;
                                             $question = 0;
                                             foreach ($grade->books as $book) {
-                                                $session += count($book->sessions);
-                                                foreach ($book->sessions as $session) {
-                                                    $question += count($session->questions);
+                                                $session += $book->sessions->count();
+                                                foreach ($book->sessions as $s) {
+                                                    $question += count($s->questions);
                                                 }
                                             }
                                         @endphp

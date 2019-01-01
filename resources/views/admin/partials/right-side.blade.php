@@ -38,19 +38,11 @@
         <div class="pcoded-navigation-label">سوالات </div>
         <ul class="pcoded-item pcoded-left-item">
             <li class=" ">
-                <a href="form-elements-component.html" class="waves-effect waves-dark">
+                <a href="{{route('admin.question.index')}}" class="waves-effect waves-dark">
                                     <span class="pcoded-micon">
                                         <i class="feather icon-clipboard"></i>
                                     </span>
                     <span class="pcoded-mtext">مدیریت سوالات</span>
-                </a>
-            </li>
-            <li class=" ">
-                <a href="bs-basic-table.html" class="waves-effect waves-dark">
-                                    <span class="pcoded-micon">
-                                        <i class="feather icon-credit-card"></i>
-                                    </span>
-                    <span class="pcoded-mtext">افزودن سوال</span>
                 </a>
             </li>
         </ul>

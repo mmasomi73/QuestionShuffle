@@ -54,4 +54,16 @@ class Question extends Model
     {
         return $this->hasMany(Answer::class, 'question_id', 'id');
     }
+
+    public function getRate()
+    {
+        switch ($this->rate){
+            case 0:return 'خیلی آسان';break;
+            case 1:return 'آسان';break;
+            case 2:return 'متوسط';break;
+            case 3:return 'دشوار';break;
+            case 4:return 'خیلی دشوار';break;
+            default :return 'خیلی آسان';break;
+        }
+    }
 }

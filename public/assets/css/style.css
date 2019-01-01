@@ -9598,6 +9598,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > td:first-child:before, table
 .notify .progress {
     margin-top: 8px;
     background-color: #e18600;
+    height: 5px !important;
+    border-radius: 0;
+    color: #fff;
 }
 
 .notify .progress-bar {
@@ -9617,6 +9620,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > td:first-child:before, table
     height: 5px !important;
     background-color: #16dc92;
     border-radius: 0;
+    color: #fff;
 }
 
 .notify.alert-success .progress-bar {
@@ -9633,4 +9637,10 @@ select.form-control:not([size]):not([multiple]) {
 }
 .fnt-10p{
     font-size: 10px;
+}
+.truncate {
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

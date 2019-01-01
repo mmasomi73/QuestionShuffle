@@ -76,4 +76,9 @@ class BookRepository
     {
         return $this->model->with(['grade','sessions','sessions.questions'])->get();
     }
+
+    public function count()
+    {
+        return Book::count();
+    }
 }

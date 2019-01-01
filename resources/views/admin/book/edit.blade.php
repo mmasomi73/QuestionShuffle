@@ -25,7 +25,7 @@
     <div class="pcoded-inner-content rtl text-right">
         <div class="main-body">
             <div class="page-wrapper">
-                <div class="page-body">
+                <div class="page-body isf">
                     <!-- [ page content ] start -->
                     <!-- Widget -->
                     <div class="row">
@@ -35,8 +35,8 @@
                             $question = 0;
 
                             $session += count($book->sessions);
-                            foreach ($book->sessions as $session) {
-                                $question += count($session->questions);
+                            foreach ($book->sessions as $s) {
+                                $question += count($s->questions);
                             }
 
                         @endphp
