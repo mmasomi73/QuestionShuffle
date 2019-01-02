@@ -119,7 +119,7 @@ class SessionalQuestionsExport
             //--------------= Answer Column
             $cell = $table->addCell(900,$cellVCentered);
             $textrun = $cell->addTextRun($cellHCentered);
-            $textrun->addText($question->answers->first()->option, $style);
+            $textrun->addText(getOption($question->answers->first()->option), $style);
         }
 
         $file = randomString(12).'.docx';

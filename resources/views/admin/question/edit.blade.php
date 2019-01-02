@@ -34,20 +34,11 @@
                 <div class="page-body">
                     <!-- [ page content ] start -->
                     <!-- Store -->
-                    <div class="card rtl text-right">
+                    <div class="card rtl text-right st-card">
                         <div class="card-header">
-                            <h5>افزودن سوال</h5>
-                            <div class="card-header-right">
-                                <ul class="list-unstyled card-option">
-                                    <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i>
-                                    </li>
-                                    <li><i class="feather icon-maximize full-card"></i></li>
-                                    <li><i class="feather icon-minus minimize-card"></i></li>
-                                    <li><i class="feather icon-refresh-cw reload-card"></i></li>
-                                    <li><i class="feather icon-trash close-card"></i></li>
-                                    <li><i class="feather icon-chevron-left open-card-option"></i></li>
-                                </ul>
-                            </div>
+                            <span class="header-icon"><i class="feather icon-edit full-card"></i></span>
+                            <h5>ویرایش سوال</h5>
+                            <span class="header-action"><i class="feather icon-chevron-down"></i></span>
                         </div>
                         <div class="card-block table-border-style">
                             <form action="{{route('admin.question.update',$question->id)}}" method="post" class="form-material">

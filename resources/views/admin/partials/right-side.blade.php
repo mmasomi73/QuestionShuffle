@@ -45,6 +45,14 @@
                     <span class="pcoded-mtext">مدیریت سوالات</span>
                 </a>
             </li>
+            <li class=" ">
+                <a href="{{route('admin.export.index')}}" class="waves-effect waves-dark">
+                                    <span class="pcoded-micon">
+                                        <i class="feather icon-download-cloud"></i>
+                                    </span>
+                    <span class="pcoded-mtext">خروجی</span>
+                </a>
+            </li>
         </ul>
         <div class="pcoded-navigation-label">مدیریت</div>
         <ul class="pcoded-item pcoded-left-item">

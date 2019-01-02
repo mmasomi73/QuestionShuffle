@@ -31,20 +31,11 @@
                 <div class="page-body">
                     <!-- [ page content ] start -->
                     <!-- Store -->
-                    <div class="card rtl text-right">
+                    <div class="card rtl text-right st-card">
                         <div class="card-header">
+                            <span class="header-icon"><i class="feather icon-file-plus full-card"></i></span>
                             <h5>افزودن پایه تحصیلی</h5>
-                            <div class="card-header-right">
-                                <ul class="list-unstyled card-option">
-                                    <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i>
-                                    </li>
-                                    <li><i class="feather icon-maximize full-card"></i></li>
-                                    <li><i class="feather icon-minus minimize-card"></i></li>
-                                    <li><i class="feather icon-refresh-cw reload-card"></i></li>
-                                    <li><i class="feather icon-trash close-card"></i></li>
-                                    <li><i class="feather icon-chevron-left open-card-option"></i></li>
-                                </ul>
-                            </div>
+                            <span class="header-action"><i class="feather icon-chevron-down"></i></span>
                         </div>
                         <div class="card-block table-border-style">
                             <form action="{{route('admin.grade.store')}}" method="post" class="form-material">
@@ -81,20 +72,11 @@
                         </div>
                     </div>
                     <!-- List -->
-                    <div class="card rtl text-right isf">
+                    <div class="card rtl text-right isf st-card">
                         <div class="card-header">
+                            <span class="header-icon"><i class="feather icon-list full-card"></i></span>
                             <h5>پایه‌های تحصیلی</h5>
-                            <div class="card-header-right">
-                                <ul class="list-unstyled card-option">
-                                    <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i>
-                                    </li>
-                                    <li><i class="feather icon-maximize full-card"></i></li>
-                                    <li><i class="feather icon-minus minimize-card"></i></li>
-                                    <li><i class="feather icon-refresh-cw reload-card"></i></li>
-                                    <li><i class="feather icon-trash close-card"></i></li>
-                                    <li><i class="feather icon-chevron-left open-card-option"></i></li>
-                                </ul>
-                            </div>
+                            <span class="header-action"><i class="feather icon-chevron-down"></i></span>
                         </div>
                         <div class="card-block table-border-style">
                             <div class="table-responsive">

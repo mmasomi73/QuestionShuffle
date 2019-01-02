@@ -68,20 +68,11 @@
                         </div>
                     </div>
                     <!-- Update -->
-                    <div class="card rtl text-right">
+                    <div class="card rtl text-right st-card">
                         <div class="card-header">
+                            <span class="header-icon"><i class="feather icon-edit full-card"></i></span>
                             <h5>ویرایش فصل</h5>
-                            <div class="card-header-right">
-                                <ul class="list-unstyled card-option">
-                                    <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i>
-                                    </li>
-                                    <li><i class="feather icon-maximize full-card"></i></li>
-                                    <li><i class="feather icon-minus minimize-card"></i></li>
-                                    <li><i class="feather icon-refresh-cw reload-card"></i></li>
-                                    <li><i class="feather icon-trash close-card"></i></li>
-                                    <li><i class="feather icon-chevron-left open-card-option"></i></li>
-                                </ul>
-                            </div>
+                            <span class="header-action"><i class="feather icon-chevron-down"></i></span>
                         </div>
                         <div class="card-block table-border-style">
                             <form action="{{route('admin.session.update', $session->id)}}" method="post" class="form-material">
@@ -122,20 +113,11 @@
                         </div>
                     </div>
                     <!-- Store Session -->
-                    <div class="card rtl text-right">
+                    <div class="card rtl text-right st-card">
                         <div class="card-header">
+                            <span class="header-icon"><i class="feather icon-save full-card"></i></span>
                             <h5>افزودن سوال</h5>
-                            <div class="card-header-right">
-                                <ul class="list-unstyled card-option">
-                                    <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i>
-                                    </li>
-                                    <li><i class="feather icon-maximize full-card"></i></li>
-                                    <li><i class="feather icon-minus minimize-card"></i></li>
-                                    <li><i class="feather icon-refresh-cw reload-card"></i></li>
-                                    <li><i class="feather icon-trash close-card"></i></li>
-                                    <li><i class="feather icon-chevron-left open-card-option"></i></li>
-                                </ul>
-                            </div>
+                            <span class="header-action"><i class="feather icon-chevron-down"></i></span>
                         </div>
                         <div class="card-block table-border-style">
                             <form action="{{route('admin.question.store')}}" method="post" class="form-material">
@@ -266,20 +248,11 @@
                         </div>
                     </div>
                     <!-- Questions -->
-                    <div class="card rtl text-right isf">
+                    <div class="card rtl text-right isf st-card">
                         <div class="card-header">
+                            <span class="header-icon"><i class="feather icon-list full-card"></i></span>
                             <h5>سوالات فصل</h5>
-                            <div class="card-header-right">
-                                <ul class="list-unstyled card-option">
-                                    <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i>
-                                    </li>
-                                    <li><i class="feather icon-maximize full-card"></i></li>
-                                    <li><i class="feather icon-minus minimize-card"></i></li>
-                                    <li><i class="feather icon-refresh-cw reload-card"></i></li>
-                                    <li><i class="feather icon-trash close-card"></i></li>
-                                    <li><i class="feather icon-chevron-left open-card-option"></i></li>
-                                </ul>
-                            </div>
+                            <span class="header-action"><i class="feather icon-chevron-down"></i></span>
                         </div>
                         <div class="card-block table-border-style">
                             <div class="table-responsive">

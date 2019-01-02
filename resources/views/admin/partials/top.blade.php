@@ -68,7 +68,7 @@
                 <li class="user-profile header-notification">
                     <div class="dropdown-primary dropdown">
                         <div class="dropdown-toggle" data-toggle="dropdown">
-                            <span class="float-right">رضا ملکیان</span>
+                            <span class="float-right">صابر مرندی</span>
                             <i class="feather icon-chevron-down"></i>
                             <img src="{{url('/')}}/assets/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
                         </div>
