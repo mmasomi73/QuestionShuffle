@@ -673,7 +673,7 @@
 
 .order-card .card-icon {
     position: absolute;
-    right: -17px;
+    left: -17px;
     font-size: 100px;
     top: 20px;
     opacity: 0.5

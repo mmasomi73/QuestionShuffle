@@ -44,5 +44,10 @@
             '</div>'
         });
         @endif
+
+        $('.header-action').click(function () {
+            $(this).toggleClass('rot180');
+            $(this).parents('div.card').find('div.card-block').slideToggle();
+        });
     });
 </script>

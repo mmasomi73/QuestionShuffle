@@ -43,9 +43,27 @@ Route::post('question/remove/{question}','Admin\QuestionController@remove')->nam
 Route::get('exam','Admin\ExamController@index')->name('admin.exam.index');
 Route::post('exam/take','Admin\ExamController@take')->name('admin.exam.take');
 
-//----------------------------------------= Exam Route
-Route::get('excel','Admin\ExportController@excel')->name('admin.export.excel');
-Route::get('word','Admin\ExportController@word')->name('admin.export.word');
-Route::get('pdf','Admin\ExportController@pdf')->name('admin.export.pdf');
+//----------------------------------------= Export Route
+Route::get('export','Admin\ExportController@index')->name('admin.export.index');
+Route::post('export/excel','Admin\ExportController@excel')->name('admin.export.excel');
+Route::post('export/word','Admin\ExportController@word')->name('admin.export.word');
+Route::get('export/excel/all','Admin\ExportController@excel')->name('admin.export.all.excel');
+Route::get('export/word/all','Admin\ExportController@word')->name('admin.export.all.word');
 
 Route::get('/','Admin\IndexController@index')->name('admin.index');
+Route::get('/test',function (){
+    $arr2 = $arr = ['a'=>'a','b'=>'b','c'=>'c','d'=>'d','e'=>'e','f'=>'f','g'=>'g'];
+
+    $index = 'a';
+    $keys = array_keys($arr);
+
+    shuffle($arr);
+//
+    $i = 0;
+    foreach($arr2 as $key => $a) {
+        $new[$key] = $arr[$i++];
+    }
+
+    $arr = $new;
+    dd($arr,$arr2);
+})->name('admin.test');

@@ -8,7 +8,6 @@
 
 namespace App\Repositories;
 
-
 use App\Question;
 
 class QuestionRepository
@@ -77,6 +76,7 @@ class QuestionRepository
         return false;
 
     }
+
     /**
      * Get Model By Id  [^_^]
      * @param $id
@@ -90,6 +90,58 @@ class QuestionRepository
     public function count()
     {
         return Question::count();
+    }
+
+    public function getFilter($request)
+    {
+        $this->model = $this->model->whereNotNull('created_at');
+
+        //----------------------------------------= Grade Filter
+        if(!empty($request->get('grade_id'))){
+            if(count($request->get('grade_id'))>0){
+                $this->model = $this->model->whereHas('book', function ($query)use($request) {
+                    $query->whereIn('grade_id',$request->get('grade_id'));
+                });
+            }else{
+                $this->model = $this->model->whereHas('book', function ($query)use($request) {
+                    $query->where('grade_id',$request->get('grade_id'));
+                });
+            }
+        }
+
+        //----------------------------------------= Book Filter
+        if(!empty($request->get('book_id'))){
+            if(count($request->get('grade_id'))>0){
+                $this->model = $this->model->whereIn('book_id',$request->get('book_id'));
+            }else{
+                $this->model = $this->model->where('book_id',$request->get('book_id'));
+            }
+        }
+
+        //----------------------------------------= Session Filter
+        if(!empty($request->get('session_id'))){
+            if(count($request->get('session_id'))>0){
+                $this->model = $this->model->whereIn('session_id',$request->get('session_id'));
+            }else{
+                $this->model = $this->model->where('session_id',$request->get('session_id'));
+            }
+        }
+
+        //----------------------------------------= Session Filter
+        if(!empty($request->get('rate'))){
+            if(count($request->get('rate'))>0){
+                $this->model = $this->model->whereIn('rate',$request->get('rate'));
+            }else{
+                $this->model = $this->model->where('rate',$request->get('rate'));
+            }
+        }
+
+        $this->model = $this->model->get();
+        return $this->model;
+    }
+
+    public function getByIds(array $ids){
+        return $this->model->whereIn('id',$ids)->with(['book','session','options','answers'])->get();
     }
 
 

@@ -11,14 +11,22 @@ namespace App\Utility\Exports\Word;
 
 use App\Repositories\QuestionRepository;
 
-class QuestionsExport
+class SessionalQuestionsExport
 {
 
     private $questions;
+    private $uniqueKey;
 
-    public function __construct()
+    public function __construct(array $keys,$uniqueKey)
     {
-        $this->questions = (new QuestionRepository())->all();
+        $this->questions = (new QuestionRepository())->getByIds($keys);
+        $this->uniqueKey = $uniqueKey;
+
+        $this->questions = $this->questions->shuffle();
+        $this->questions = $this->questions->shuffle();
+        $this->questions = $this->questions->shuffle();
+        $this->questions = $this->questions->shuffle();
+        $this->questions = $this->questions->shuffle();
     }
 
     /**
@@ -38,6 +46,11 @@ class QuestionsExport
             'footerHeight' => 50,
         ));
 
+        $styleCode = array(
+            'rtl' => true,
+            'name' => 'Letter Gothic Std',
+            'size' => 10
+        );
         $style = array('rtl' => true,
                        'name' => 'B Mitra',
                        'size' => 12);
@@ -58,8 +71,8 @@ class QuestionsExport
         $textrun->addText('ردیف', $style);
 
         $cell = $table->addCell(11000);
-        $textrun = $cell->addTextRun($cellHEnd);
-        $textrun->addText('سوالات', $style);
+        $textrun = $cell->addTextRun($cellHCentered);
+        $textrun->addText($this->uniqueKey, $styleCode);
 
         $cell = $table->addCell(500,$cellVCentered);
         $textrun = $cell->addTextRun($cellHCentered);
@@ -87,14 +100,30 @@ class QuestionsExport
             $textrun->addText('1', $style);
         }
 
-        $file = 'Questions.docx';
-        header("Content-Description: File Transfer");
-        header('Content-Disposition: attachment; filename="' . $file . '"');
-        header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
-        header('Content-Transfer-Encoding: binary');
-        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-        header('Expires: 0');
-        $xmlWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
-        return $xmlWriter->save("php://output");
+        $section->addTextBreak();
+
+        //--------------= Answers Table
+        $answerBorderStyle = array('borderSize' => 6,
+                            'borderColor' => '000000',
+                            'bgColor'=>'cecece'
+                        );
+        $table = $section->addTable($answerBorderStyle);
+        $i = 0;
+        foreach ($questions as $question) {
+            $table->addRow();
+            //--------------= Rows Number Column
+            $cell = $table->addCell(500,$cellVCentered);
+            $textrun = $cell->addTextRun($cellHCentered);
+            $textrun->addText(++$i, $style);
+
+            //--------------= Answer Column
+            $cell = $table->addCell(900,$cellVCentered);
+            $textrun = $cell->addTextRun($cellHCentered);
+            $textrun->addText($question->answers->first()->option, $style);
+        }
+
+        $file = randomString(12).'.docx';
+        $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
+        return $objWriter->save('Exports'.DIRECTORY_SEPARATOR.$file);
     }
 }
