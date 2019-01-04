@@ -22,6 +22,7 @@ class SessionalQuestionsExport
         $this->questions = (new QuestionRepository())->getByIds($keys);
         $this->uniqueKey = $uniqueKey;
 
+
         $this->questions = $this->questions->shuffle();
         $this->questions = $this->questions->shuffle();
         $this->questions = $this->questions->shuffle();
@@ -78,6 +79,7 @@ class SessionalQuestionsExport
         $textrun = $cell->addTextRun($cellHCentered);
         $textrun->addText('بارم', $style);
 
+        $shuffledOptions = $this->shuffleOptions();
         //--------------= Questions
         foreach ($questions as $question) {
             $table->addRow();
@@ -90,9 +92,13 @@ class SessionalQuestionsExport
             $cell = $table->addCell(11000);
             $textrun = $cell->addTextRun($cellHEnd);
             $textrun->addText($question->question , $style);
-            foreach ($question->options as $option) {
+
+            $sortedOps = $shuffledOptions[$question->id];
+            asort($sortedOps);
+            foreach ($sortedOps as $oid => $option) {
                 $textrun->addTextBreak();
-                $textrun->addText(getOption($option->option) . $option->text, $style);
+                $opText = $question->options->where('option',$oid)->first();
+                $textrun->addText(getOption($option) .$opText->text, $style);
             }
             //--------------= Rows Number Column
             $cell = $table->addCell(500,$cellVCentered);
@@ -119,11 +125,43 @@ class SessionalQuestionsExport
             //--------------= Answer Column
             $cell = $table->addCell(900,$cellVCentered);
             $textrun = $cell->addTextRun($cellHCentered);
-            $textrun->addText(getOption($question->answers->first()->option), $style);
+            $textrun->addText(getOption($shuffledOptions[$question->id][$question->answers->first()->option]), $style);
+//            $textrun->addText(getOption($question->answers->first()->option), $style);
         }
 
         $file = randomString(12).'.docx';
         $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
         return $objWriter->save('Exports'.DIRECTORY_SEPARATOR.$file);
+    }
+
+    public function shuffleOptions() : array
+    {
+        $options = [];
+        $back_arr = [];
+        //--------------= Get Options & Answers
+        foreach ($this->questions as $question) {
+            foreach ($question->options as $option) {
+                $back_arr[$question->id][$option->option] = $options[$question->id][$option->option] = $option->option;
+            }
+        }
+
+        //--------------= Shuffle Options
+        foreach ($options as $key => $option){
+            shuffle($option);
+            shuffle($option);
+            shuffle($option);
+            $options[$key] = $option;
+        }
+        $final_arr = [];
+
+        //--------------= Create Shuffled Options
+        foreach ($back_arr as $id => $option){
+            $ae = 0;
+            foreach ($option as  $key => $item){
+                $final_arr[$id][$key] = $options[$id][$ae++];
+            }
+        }
+        
+        return $final_arr;
     }
 }
