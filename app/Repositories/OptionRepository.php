@@ -59,10 +59,9 @@ class OptionRepository
      */
     public function store($request)
     {
-        $this->model->question = $request->get('question');
-        $this->model->rate = $request->get('rate');
-        $this->model->book_id = $request->get('book_id');
-        $this->model->session_id = $request->get('session_id');
+	    $this->model->text = $request->get('text');
+	    $this->model->option = $request->get('option');
+	    $this->model->question_id = $request->get('question_id');
         $this->model->save();
 
     }

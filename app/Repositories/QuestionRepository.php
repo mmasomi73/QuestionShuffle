@@ -25,15 +25,24 @@ class QuestionRepository
      */
     public function store($request)
     {
-        $this->model->question = $request->get('question');
-        $this->model->rate = $request->get('rate');
-        $this->model->book_id = $request->get('book_id');
-        $this->model->session_id = $request->get('session_id');
-        $this->model->save();
+    	try{
+    		\DB::beginTransaction();
+		    $this->model->question = $request->get('question');
+		    $this->model->rate = $request->get('rate');
+		    $this->model->book_id = $request->get('book_id');
+		    $this->model->session_id = $request->get('session_id');
+		    $this->model->save();
 
-        $options = (new OptionRepository())->next($request,$this->model);
-        $result = (new AnswerRepository())->next($request,$this->model,$options);
-        return $result;
+		    $options = (new OptionRepository())->next($request,$this->model);
+		    $result = (new AnswerRepository())->next($request,$this->model,$options);
+		    \DB::commit();
+		    return $result;
+	    }catch (\Exception $e){
+    		\DB::rollBack();
+    		return false;
+	    }
+
+
 
     }
 

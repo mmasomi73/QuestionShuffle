@@ -50,6 +50,10 @@ Route::post('export/word','Admin\ExportController@word')->name('admin.export.wor
 Route::get('export/excel/all','Admin\ExportController@excel')->name('admin.export.all.excel');
 Route::get('export/word/all','Admin\ExportController@word')->name('admin.export.all.word');
 
+//----------------------------------------= Import Route
+Route::get('import','Admin\ImportController@index')->name('admin.import.index');
+Route::post('import','Admin\ImportController@import')->name('admin.import.submit');
+
 Route::get('/','Admin\IndexController@index')->name('admin.index');
 Route::get('/test',function (){
     $arr2 = $arr = ['a'=>'a','b'=>'b','c'=>'c','d'=>'d','e'=>'e','f'=>'f','g'=>'g'];
