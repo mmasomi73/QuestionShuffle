@@ -25,7 +25,7 @@ class StoreSessionRequest extends FormRequest
     {
         return [
             'name'=>'required',
-            'book_id'=>'required|exists:grades,id'
+            'book_id'=>'required|exists:books,id'
         ];
     }
 }
