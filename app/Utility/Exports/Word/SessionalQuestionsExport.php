@@ -16,11 +16,13 @@ class SessionalQuestionsExport
 
     private $questions;
     private $uniqueKey;
+    private $config;
 
-    public function __construct(array $keys,$uniqueKey)
+    public function __construct(array $keys,$uniqueKey,$config)
     {
         $this->questions = (new QuestionRepository())->getByIds($keys);
         $this->uniqueKey = $uniqueKey;
+        $this->config = $config;
 
 
         $this->questions = $this->questions->shuffle();
@@ -46,6 +48,7 @@ class SessionalQuestionsExport
             'headerHeight' => 50,
             'footerHeight' => 50,
         ));
+		$font = $this->getFont();
 
         $styleCode = array(
             'rtl' => true,
@@ -53,11 +56,14 @@ class SessionalQuestionsExport
             'size' => 10
         );
         $style = array('rtl' => true,
-                       'name' => 'B Mitra',
+                       'name' => $font,
                        'size' => 12);
 
         $borderStyle = array('borderSize' => 6,
-                            'borderColor' => '000000');
+                             'borderColor' => '000000',
+                             'width' => 5000,
+                             'unit' => \PhpOffice\PhpWord\SimpleType\TblWidth::PERCENT,
+                             'bidiVisual' => true);
 
         $table = $section->addTable($borderStyle);
         $cellHCentered = array('alignment' => \PhpOffice\PhpWord\SimpleType\Jc::CENTER);
@@ -144,6 +150,7 @@ class SessionalQuestionsExport
                 $back_arr[$question->id][$option->option] = $options[$question->id][$option->option] = $option->option;
             }
         }
+        if($this->config['shuffle'] == false) return $back_arr;
 
         //--------------= Shuffle Options
         foreach ($options as $key => $option){
@@ -164,4 +171,15 @@ class SessionalQuestionsExport
 
         return $final_arr;
     }
+
+	private function getFont() {
+		switch ($this->config){
+			case 'mitra': return 'B Mitra';
+			case 'nazanin': return 'B Nazanin';
+			case 'titr': return 'B Titr';
+			case 'homa': return 'tahoma';
+			default: return 'B Mitra';
+		}
+    }
+
 }

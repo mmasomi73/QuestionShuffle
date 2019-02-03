@@ -1224,7 +1224,9 @@ a.bg-danger:focus, a.bg-danger:hover {
 .p-r-10 {
     padding-right: 10px
 }
-
+.m-t-1-25{
+    margin-top: 1.25rem ;
+}
 .m-10 {
     margin: 10px
 }
@@ -7701,9 +7703,9 @@ body .pcoded[vertical-nav-type="collapsed"] .header-navbar .navbar-wrapper .navb
 }
 
 .select2-container--default .select2-selection--single .select2-selection__rendered {
-    background-color: #448aff;
+    background-color: transparent;
     color: #fff;
-    padding: 8px 30px 8px 20px
+    padding: 5px 30px 8px 20px
 }
 
 .select2-container--default .select2-selection--single .select2-selection__arrow {

@@ -34,7 +34,8 @@ class ExportHandler
 
         $config['format'] = $this->request->get('format') ==  'excel' ? 'excel':'word';
         $config['source'] = count($this->questions);
-
+        $config['shuffle'] = $this->request->get('shuffle') == 1 ? true : false;
+        $config['font'] = $this->request->get('font');
         if($config['number'] > $config['source']) $config['number'] = $config['source'];
 
         if ($config['format'] == 'excel') return $this->excelHandler($config);
@@ -56,7 +57,7 @@ class ExportHandler
         }
         for ($i = 0;$i < $config['quantity'];$i++){
             $uniqueKey = randomString(5);
-            $handler = new SessionalQuestionsExport($ids,$uniqueKey);
+            $handler = new SessionalQuestionsExport($ids,$uniqueKey,$config);
             $handler->download();
         }
 

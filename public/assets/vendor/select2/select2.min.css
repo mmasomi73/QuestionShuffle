@@ -10,7 +10,7 @@
     box-sizing: border-box;
     cursor: pointer;
     display: block;
-    height: 28px;
+    height: 38px;
     user-select: none;
     -webkit-user-select: none
 }
@@ -85,7 +85,9 @@
 .select2-results__options {
     list-style: none;
     margin: 0;
-    padding: 0
+    padding: 0;
+    direction: rtl;
+    text-align: right;
 }
 
 .select2-results__option {
@@ -186,7 +188,7 @@
 }
 
 .select2-container--default .select2-selection--single .select2-selection__arrow {
-    height: 26px;
+    height: 36px;
     position: absolute;
     top: 1px;
     right: 1px;

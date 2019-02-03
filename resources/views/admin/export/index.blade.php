@@ -66,6 +66,36 @@
                                             </div>
                                         </div>
                                     </div>
+                                    {{--Shuffle--}}
+                                    <div class="col-lg-3">
+                                        <div class="form-group {{ $errors->has('shuffle') ? 'form-danger' : 'form-primary' }}">
+                                            <label for="shuffle" class="select-label"> درهم ریزی گزینه ها</label>
+                                            <select name="shuffle" id="shuffle" class="form-control isf" >
+                                                    <option @if(old('shuffle') == 0)  selected @endif value="0">خیر</option>
+                                                    <option @if(old('shuffle') == 1)  selected @endif value="1">بله</option>
+                                            </select>
+                                            <span class="form-bar"></span>
+                                            @if ($errors->has('shuffle'))
+                                                <span class="input-error">{{ $errors->first('shuffle') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    {{--Font--}}
+                                    <div class="col-lg-3">
+                                        <div class="form-group {{ $errors->has('font') ? 'form-danger' : 'form-primary' }}">
+                                            <label for="font" class="select-label"> فونت</label>
+                                            <select name="font" id="font" class="form-control isf" >
+                                                <option @if(old('font') == 'mitra')  selected @endif value="mitra">میترا</option>
+                                                <option @if(old('font') == 'nazanin')  selected @endif value="nazanin">نازنین</option>
+                                                <option @if(old('font') == 'homa')  selected @endif value="homa">هما</option>
+                                                <option @if(old('font') == 'titr')  selected @endif value="titr">تیتر</option>
+                                            </select>
+                                            <span class="form-bar"></span>
+                                            @if ($errors->has('font'))
+                                                <span class="input-error">{{ $errors->first('font') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
                                     {{-- Grade --}}
                                     <div class="col-lg-3">
                                         <div class="form-group {{ $errors->has('grade_id') ? 'form-danger' : 'form-primary' }}">
@@ -163,7 +193,7 @@
                                         </div>
                                     </div>
                                     {{-- Format --}}
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-3 m-t-1-25">
                                         <div class="form-group {{ $errors->has('format') ? 'form-danger' : 'form-primary' }}">
 
                                             <select name="format" id="format" class="form-control">
@@ -183,7 +213,7 @@
                                         </div>
                                     </div>
                                     {{-- Number --}}
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-3 m-t-1-25">
                                         <div class="form-group {{ $errors->has('number') ? 'form-danger' : 'form-primary' }}">
                                             <input type="text" class="form-control ltr text-left isf" name="number"
                                                    id="number" value="{{old('number',$request->get('number'))}}">
@@ -195,7 +225,7 @@
                                         </div>
                                     </div>
                                     {{-- Quantity --}}
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-3 m-t-1-25">
                                         <div class="form-group {{ $errors->has('quantity') ? 'form-danger' : 'form-primary' }}">
                                             <input type="text" class="form-control ltr text-left isf" name="quantity"
                                                    id="quantity" value="{{old('quantity',$request->get('quantity'))}}">
@@ -233,7 +263,8 @@
         $(document).ready(function () {
             $('select.isf').select2({
                 language: "fa",
-                dir: "rtl"
+                dir: "rtl",
+                minimumResultsForSearch: -1
             });
         });
     </script>
