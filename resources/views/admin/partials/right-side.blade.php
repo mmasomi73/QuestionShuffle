@@ -2,11 +2,12 @@
     <div class="pcoded-inner-navbar main-menu">
         <div class="">
             <div class="main-menu-header">
-                <img class="img-menu-user img-radius" src="{{url('/')}}/assets/images/avatar-4.jpg" alt="User-Profile-Image">
+                <img class="img-menu-user img-radius" src="{{!empty(auth()->user()->avatar)? url('/images').'/'.auth()->user()->avatar:url('/').'/assets/images/avatar-4.jpg'}}"
+                     alt="{{auth()->user()->name}}">
                 <div class="user-details">
                     <p id="more-details">
                         <i class="feather icon-chevron-down m-r-10"></i>
-                        صابر مرندی
+                        {{auth()->user()->name}}
                     </p>
                 </div>
             </div>
@@ -16,10 +17,7 @@
                         <a href="#">
                             <i class="feather icon-user"></i>پروفایل
                         </a>
-                        <a href="#!">
-                            <i class="feather icon-settings"></i>تنظمیات
-                        </a>
-                        <a href="auth-normal-sign-in.html">
+                        <a href="{{route('admin.logout')}}">
                             <i class="feather icon-log-out"></i>خروج
                         </a>
                     </li>

@@ -134,13 +134,7 @@ function toggleFullScreen() {
     $('.full-screen').toggleClass('icon-maximize');
     $('.full-screen').toggleClass('icon-minimize');
 }
-$('body').append('' +
-    '<div class="fixed-button">' +
-        '<a href="https://themeforest.net/item/able-pro-responsive-bootstrap-4-admin-template/19300403?ref=phoenixcoded" target="_blank" class="btn btn-md btn-primary">' +
-            '<i class="fa fa-shopping-cart" aria-hidden="true"></i> Upgrade To Pro' +
-        '</a> ' +
-    '</div>' +
-'');
+
 var $window = $(window);
 var nav = $('.fixed-button');
 $window.scroll(function() {

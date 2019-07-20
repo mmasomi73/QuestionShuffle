@@ -38,6 +38,9 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
+        $this->mapStudentRoutes();
+        $this->mapTeacherRoutes();
+        $this->mapAdminRoutes();
 
         //
     }
@@ -70,4 +73,49 @@ class RouteServiceProvider extends ServiceProvider
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
     }
+
+	/**
+	 * Define the "admin" routes for the application.
+	 *
+	 * These routes all receive session state, CSRF protection, etc.
+	 *
+	 * @return void
+	 */
+	protected function mapAdminRoutes()
+	{
+		Route::prefix('admin')
+			 ->middleware(['web','auth:admin'])
+		     ->namespace($this->namespace.'\Admin')
+		     ->group(base_path('routes/admin.php'));
+	}
+
+	/**
+	 * Define the "teacher" routes for the application.
+	 *
+	 * These routes all receive session state, CSRF protection, etc.
+	 *
+	 * @return void
+	 */
+	protected function mapTeacherRoutes()
+	{
+		Route::prefix('teacher')
+		     ->middleware(['web','auth:teacher'])
+		     ->namespace($this->namespace.'\Teacher')
+		     ->group(base_path('routes/teacher.php'));
+	}
+
+	/**
+	 * Define the "student" routes for the application.
+	 *
+	 * These routes all receive session state, CSRF protection, etc.
+	 *
+	 * @return void
+	 */
+	protected function mapStudentRoutes()
+	{
+		Route::prefix('student')
+		     ->middleware(['web','auth:student'])
+		     ->namespace($this->namespace.'\Student')
+		     ->group(base_path('routes/student.php'));
+	}
 }

@@ -173,7 +173,7 @@ class SessionalQuestionsExport
     }
 
 	private function getFont() {
-		switch ($this->config){
+		switch ($this->config['font']){
 			case 'mitra': return 'B Mitra';
 			case 'nazanin': return 'B Nazanin';
 			case 'titr': return 'B Titr';

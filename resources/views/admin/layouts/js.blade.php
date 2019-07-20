@@ -21,4 +21,4 @@
 <script src="{{url('/')}}/assets/js/pcoded.min.js"></script>
 <script src="{{url('/')}}/assets/js/vertical/vertical-layout.min.js"></script>
 <script type="text/javascript" src="{{url('/')}}/assets/pages/dashboard/custom-dashboard.min.js"></script>
-<script type="text/javascript" src="{{url('/')}}/assets/js/script.min.js"></script>
+<script type="text/javascript" src="{{url('/')}}/assets/js/script.js"></script>

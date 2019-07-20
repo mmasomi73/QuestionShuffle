@@ -68,24 +68,18 @@
                 <li class="user-profile header-notification">
                     <div class="dropdown-primary dropdown">
                         <div class="dropdown-toggle" data-toggle="dropdown">
-                            <span class="float-right">صابر مرندی</span>
+                            <span class="float-right">{{auth()->user()->name}}</span>
                             <i class="feather icon-chevron-down"></i>
-                            <img src="{{url('/')}}/assets/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
+                            <img src="{{!empty(auth()->user()->avatar)? url('/images').'/'.auth()->user()->avatar:url('/').'/assets/images/avatar-4.jpg'}}" class="img-radius" alt="{{auth()->user()->name}}">
                         </div>
                         <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                            <li>
-                                <a href="#!">
-                                    <i class="feather icon-settings"></i>
-                                    تنظمیات
-                                </a>
-                            </li>
                             <li>
                                 <a href="#">
                                     <i class="feather icon-user"></i> پروفایل
                                 </a>
                             </li>
                             <li>
-                                <a href="auth-normal-sign-in.html">
+                                <a href="{{route('admin.logout')}}">
                                     <i class="feather icon-log-out"></i> خروج
                                 </a>
                             </li>

@@ -23,4 +23,17 @@ class IndexController extends Controller
         $answers = (new AnswerRepository())->count();
         return view('admin.index.index',compact('options','answers','grades','questions','sessions','books'));
     }
+
+
+	public function profile() {
+		return view('admin.profile.index');
+    }
+
+	public function update() {
+
+    }
+
+	public function password() {
+
+    }
 }
